@@ -3,12 +3,12 @@
 **Description :-**
 AuthSafe sdk helps us to detect suspicious activities in real time and provides device fingerprinting, behavioral analysis, and client-side event monitoring.
 
-**Configuretion Requirements:-**
+**Configuretion Requirements**
 ---
-iOS 9.0+<br>
-Xcode 9.0+
+*iOS 9.0+<br>
+*Xcode 9.0+
 
-**Installation:-**
+**Installation**
 ---
 Authsafe iOS SDK is available through CocoaPods.
 
