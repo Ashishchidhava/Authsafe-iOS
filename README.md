@@ -1,112 +1,74 @@
 # Authsafe-iOS
 
 **Description :-**
-
-AuthSafe sdk helps us to detect suspicious activities in real time and provides device fingerprinting, behavioral analysis, and client-side event monitoring. 
+AuthSafe sdk helps us to detect suspicious activities in real time and provides device fingerprinting, behavioral analysis, and client-side event monitoring.
 
 **Configuretion Requirements:-**
 
-minSdk version = 21 
+iOS 9.0+
+Xcode 9.0+
 
-Internet permission 
-Location permission (optional) 
+**Installation:-**
 
-ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION  
-
-**Getting Start:-**
-
-**Step 1 >**  Add the JitPack repository to your build file
-
-```gradle
-
-allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-  ```
-**Step 2 >** Add the dependency
-
-```gradle
-dependencies {
-	        implementation 'com.github.Ashishchidhava:Library-Task:Tag'
-	}
-  ```
-  
-**Step 3 >** Add secret key in your manifest file
-  ```
-  <meta-data 
-    android:name="auth_safe_secret_key" 
-    android:value="@string/auth_secret" /> 
-  ```
-  
-  Java Implementation 
-  
-  // Place the below in your application class onCreate method 
+Authsafe iOS SDK is available through CocoaPods.
 
 ```
-AuthSafe.configure(this) 
-```
-The AuthSafe SDK collects device fingerprints from the device and sends this data directly to Authsafe Dashboard.  
-
-Screen Change Event: - In the screen change event Authsafe track your every screen transaction between screen open to close. 
-
-For Activity: - Once you initialize the Authsafe in application oncreate method the Activity tracking automatically will start. 
-We are tracking the whole lifecycle of activity. 
-
-For Fragment:-For fragment tracking you need to call a method in your root fragment activity. 
-
+pod "Authsafe", "1.0.0"
 ```
 
-AuthSafeFragmentLifecycleCallbacks.trackFragmentChange(this); 
-
-//It's required higher Sdk version 8 (Orio) 
-
-if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { 
-    AuthSafeFragmentLifecycleCallbacks.trackFragmentChange(this); 
-} 
-
+**Manually**
 ```
-Click Events: - In the click events Authsafe sdk is tracking your every click event. Authsafe will handle the whole functionality and working itself like gyroscope cord., screen orientation with screen X Y coordinates you just need to call the methods. 
-There are two main parts of click events. 
-
-1. Gyroscope X Y Z coordinates 
-2. Screen X Y coordinates with screen orientation 
-For Activity:-You have to override the method below. 
-
-```
-@Override 
-
-public boolean onTouchEvent(MotionEvent event) { 
-    AuthSafe.trackClickEvent(event); 
-    return true; 
-} 
-
+Download the zip file from the github release, unzip and drag Authsafe.xcframework to the Frameworks, Libraries and Embedded Content section of the target. They should all be set to Embed & Sign.
 ```
 
-For Fragment:-
+**Implementation Steps**
+
+**Objective-C**
 
 ```
-AuthSafe.trackClickEvent(view.getRoot()); 
+[Authsafe configure:@"Your secret key"];
 ```
+The AuthSafe SDK collects device fingerprints from the device and sends this data directly to Authsafe Dashboard.
 
-For View (Button, Image, etc..):- On view click you need call below method. 
-
-```
-AuthSafe.trackClickEvent(); 
-```
-
-For Recyclerview:- 
+Application Event: - In the application event Authsafe track your application lifecycle.
 
 ```
-AuthSafe.trackClickEvent(holder.itemView); 
+- (void)applicationDidBecomeActive:(UIApplication *)application{
+	[Authsafe trackAppEvent:@"active"];
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application{
+	[Authsafe trackAppEvent:@"inactive"];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application{
+	[Authsafe trackAppEvent:@"background"];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application{
+	[Authsafe trackAppEvent:@"foreground"];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application{
+	[Authsafe trackAppEvent:@"terminate"];
+}
+
+```
+Click Events: - In the click events Authsafe sdk is tracking your every click event. Authsafe will handle the whole functionality and working itself like gyroscope cord., screen orientation with screen X Y coordinates you just need to call the methods.
+There are two main parts of click events.
+
+1. Gyroscope X Y Z coordinates
+2. Screen X Y coordinates with screen orientation
+
+```
+  UITouch *touch = [[UITouch alloc]init];
+  [Authsafe trackClickEvent:@"ProfileViewController" screenOrientation:self.supportedInterfaceOrientations view:self.view touch:touch];
 ```
 
-Location Event: -This event useful for fast geo track location. 
-In this event you need to get permission from the user, then you need call the below method. 
-Authsafe needs two permission  ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION 
-If permission is already granted the call the below method   
+Location Event: -This event useful for fast geo track location.
+In this event you need to get permission from the user, then you need call the below method.
+Authsafe needs two permission  ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION
+If permission is already granted the call the below method
 
 ```
 //Location object
@@ -114,20 +76,19 @@ AuthSafe.trackLocation(location);
 ```
 
 
-Login Event: -For tracking login event you need to send the authafe token in your login request. 
+Login Event: -For tracking login event you need to send the authafe token in your login request.
 
 ```
 //For form body
-key = "request_token" 
-value = AuthSafe.getRequestToken()); 
+key = "request_token"
+value = AuthSafe.getRequestToken());
 
 //For raw data
-jsonObject.addProperty("request_token", AuthSafe.getRequestToken()); 
+jsonObject.addProperty("request_token", AuthSafe.getRequestToken());
 
 ```
 
 Thank you!
 Copyright@Authsafe.ai
-
 
 
