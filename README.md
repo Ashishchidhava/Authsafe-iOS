@@ -28,12 +28,11 @@ Download the zip file from the github release, unzip and drag Authsafe.xcframewo
 
 **Objective-C**
 
-// Place the below in your AppDelegate didFinishLaunchingWithOptions method
+// Place the below code in your AppDelegate didFinishLaunchingWithOptions method
 
 ```
 [Authsafe configure:@"Your secret key"];
 [Authsafe trackAppEvent:@"open"];
-
 ```
 The AuthSafe SDK collects device fingerprints from the device and sends this data directly to Authsafe Dashboard.
 
@@ -61,7 +60,6 @@ The AuthSafe SDK collects device fingerprints from the device and sends this dat
 - (void)applicationWillTerminate:(UIApplication *)application{
 	[Authsafe trackAppEvent:@"terminate"];
 }
-
 ```
 
 
@@ -75,8 +73,7 @@ There are two main parts of click events.
 
 ```
   UITouch *touch = [[UITouch alloc]init];
-  [Authsafe trackClickEvent:@"ProfileViewController" screenOrientation:self.supportedInterfaceOrientations view:self.view touch:touch];
-  
+  [Authsafe trackClickEvent:@"ProfileViewController" screenOrientation:self.supportedInterfaceOrientations view:self.view touch:touch]; 
 ```
 
 
@@ -87,8 +84,7 @@ If permission is already granted the call the below method
 
 ```
 //For logging location event, three parameter required screen name, latitude, longitude.
- [Authsafe trackLocationEvent:@"Home" latitude:location.coordinate.latitude longitude:location.coordinate.longitude];
- 
+ [Authsafe trackLocationEvent:@"Home" latitude:location.coordinate.latitude longitude:location.coordinate.longitude]; 
 ```
 
 
