@@ -39,6 +39,7 @@ The AuthSafe SDK collects device fingerprints from the device and sends this dat
 **Events**
 
 1. Application Event: - In the application event Authsafe track your application lifecycle.
+Implement below all methods in your AppDelegete.
 
 ```
 - (void)applicationDidBecomeActive:(UIApplication *)application{
@@ -113,6 +114,7 @@ The AuthSafe SDK collects device fingerprints from the device and sends this dat
 **Events**
 
 1. Application Event: - In the application event Authsafe track your application lifecycle.
+Implement below all methods in your AppDelegete.
 
 ```
     func applicationDidBecomeActive(_ application: UIApplication) {
