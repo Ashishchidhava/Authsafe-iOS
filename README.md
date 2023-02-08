@@ -73,7 +73,7 @@ There are two main parts of click events.
 
 ```
   UITouch *touch = [[UITouch alloc]init];
-  [Authsafe trackClickEvent:@"ProfileViewController" screenOrientation:self.supportedInterfaceOrientations view:self.view touch:touch]; 
+  [Authsafe trackClickEvent:@"Current Screen Name" screenOrientation:self.supportedInterfaceOrientations view:self.view touch:touch]; 
 ```
 
 
@@ -84,7 +84,7 @@ If permission is already granted the call the below method
 
 ```
 //For logging location event, three parameter required screen name, latitude, longitude.
- [Authsafe trackLocationEvent:@"Home" latitude:location.coordinate.latitude longitude:location.coordinate.longitude]; 
+ [Authsafe trackLocationEvent:@"Current Screen Name" latitude:location.coordinate.latitude longitude:location.coordinate.longitude]; 
 ```
 
 
@@ -98,6 +98,82 @@ value = AuthSafe.getRequestToken());
 //For raw data
 
 ```
+
+
+**Swift**
+
+// Place the below code in your AppDelegate didFinishLaunchingWithOptions method
+
+```
+  Authsafe.configure("your secret key");
+  Authsafe.trackAppEvent("open");
+```
+The AuthSafe SDK collects device fingerprints from the device and sends this data directly to Authsafe Dashboard.
+
+**Events**
+
+1. Application Event: - In the application event Authsafe track your application lifecycle.
+
+```
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        Authsafe.trackAppEvent("active");
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+    	Authsafe.trackAppEvent("inactive");
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        Authsafe.trackAppEvent("background");
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        Authsafe.trackAppEvent("foreground");
+    }
+ 
+    func applicationWillTerminate(_ application: UIApplication) {
+        Authsafe.trackAppEvent("terminate");
+    }
+    
+```
+
+
+2. Click Events: - In the click events Authsafe sdk is tracking your every click event. Authsafe will handle the whole functionality and working itself like gyroscope cord., screen orientation with screen X Y coordinates you just need to call the methods.
+There are two main parts of click events.
+
+ * Gyroscope X Y Z coordinates<br>
+ * Screen X Y coordinates with screen orientation
+
+// Place the below code in your Every ViewController viewDidLoad method
+
+```
+   let touch = UITouch();
+   Authsafe.trackClickEvent("Current Screen Name", screenOrientation:UIApplication.shared.statusBarOrientation, view: self.view, touch:touch);
+```
+
+
+3. Location Event: -This event useful for fast geo track location.
+In this event you need to get permission from the user, then you need call the below method.
+Authsafe needs two permission  ACCESS_FINE_LOCATION
+If permission is already granted the call the below method
+
+```
+//For logging location event, three parameter required screen name, latitude, longitude.
+ Authsafe.trackLocationEvent("Current Screen Name", latitude: location?.coordinate.longitude, longitude: location?.coordinate.longitude);
+```
+
+
+4. Login Event: -For tracking login event you need to send the authafe token in your login request.
+
+```
+//For form body
+key = "request_token"
+value = AuthSafe.getRequestToken());
+
+//For raw data
+
+```
+
 
 Thank you!
 Copyright@Authsafe.ai
