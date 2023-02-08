@@ -38,7 +38,7 @@ The AuthSafe SDK collects device fingerprints from the device and sends this dat
 
 **Events**
 
-1. Application Event: - In the application event Authsafe track your application lifecycle.
+1. Application Event: - In the application event Authsafe track your application lifecycle.<br>
 Implement below all methods in your AppDelegete.
 
 ```
@@ -113,7 +113,7 @@ The AuthSafe SDK collects device fingerprints from the device and sends this dat
 
 **Events**
 
-1. Application Event: - In the application event Authsafe track your application lifecycle.
+1. Application Event: - In the application event Authsafe track your application lifecycle.<br>
 Implement below all methods in your AppDelegete.
 
 ```
