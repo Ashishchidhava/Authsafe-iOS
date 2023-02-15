@@ -89,14 +89,15 @@ If permission is already granted the call the below method
 ```
 
 
-4. Login Event: -For tracking login event you need to send the authafe token in your login request.
+4. Login Event: -For tracking login event you need to send the authafe token and bundle id name with your login request.
 
 ```
-//For form body
 key = "request_token"
-value = AuthSafe.getRequestToken());
+value = [Authsafe getLoginRequestToken:_latitute longitude:_longitude];
 
-//For raw data
+NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+key = "package"
+value = bundleID
 
 ```
 
@@ -165,11 +166,11 @@ If permission is already granted the call the below method
 ```
 
 
-4. Login Event: -For tracking login event you need to send the authafe token,and package name with your login request.
+4. Login Event: -For tracking login event you need to send the authafe token,and bundle id with your login request.
 
 ```
 key = "request_token"
-value = AuthSafe.token())
+value = AuthSafe.getLoginRequestToken(latitude, longitude: longitude)
 
 
 var bundleID:String = Bundle.main.bundleIdentifier!
