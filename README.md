@@ -82,16 +82,16 @@ There are two main parts of click events.
 In this event you need to get permission from the user, then you need call the below method.
 Add these lines in your info.plist 
 
- <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Application requires user’s location for better user experience.</string>
-
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Application requires user’s location for better user experience.</string>
-
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Application requires user’s location for better user experience.</string>
-    
 ```
+ <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+ <string>Application requires user’s location for better user experience.</string>
+
+ <key>NSLocationAlwaysUsageDescription</key>
+ <string>Application requires user’s location for better user experience.</string>
+
+ <key>NSLocationWhenInUseUsageDescription</key>
+ <string>Application requires user’s location for better user experience.</string>
+   
 //For logging location event, three parameter required screen name, latitude, longitude.
  [Authsafe trackLocationEvent:@"Current Screen Name" latitude:location.coordinate.latitude longitude:location.coordinate.longitude]; 
 ```
@@ -167,17 +167,17 @@ There are two main parts of click events.
 In this event you need to get permission from the user, then you need call the below method.
 Add these lines in your info.plist 
 
+```
  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Application requires user’s location for better user experience.</string>
+ <string>Application requires user’s location for better user experience.</string>
 
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Application requires user’s location for better user experience.</string>
+ <key>NSLocationAlwaysUsageDescription</key>
+ <string>Application requires user’s location for better user experience.</string>
 
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Application requires user’s location for better user experience.</string>
+ <key>NSLocationWhenInUseUsageDescription</key>
+ <string>Application requires user’s location for better user experience.</string>
     
 
-```
 //For logging location event, three parameter required screen name, latitude, longitude.
  Authsafe.trackLocationEvent("Current Screen Name", latitude: location?.coordinate.longitude, longitude: location?.coordinate.longitude)
 ```
