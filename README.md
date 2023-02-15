@@ -80,9 +80,17 @@ There are two main parts of click events.
 
 3. Location Event: -This event useful for fast geo track location.
 In this event you need to get permission from the user, then you need call the below method.
-Authsafe needs two permission  ACCESS_FINE_LOCATION
-If permission is already granted the call the below method
+Add these lines in your info.plist 
 
+ <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Application requires user’s location for better user experience.</string>
+
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Application requires user’s location for better user experience.</string>
+
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Application requires user’s location for better user experience.</string>
+    
 ```
 //For logging location event, three parameter required screen name, latitude, longitude.
  [Authsafe trackLocationEvent:@"Current Screen Name" latitude:location.coordinate.latitude longitude:location.coordinate.longitude]; 
@@ -107,8 +115,8 @@ value = bundleID
 // Place the below code in your AppDelegate didFinishLaunchingWithOptions method
 
 ```
-  Authsafe.configure("your secret key");
-  Authsafe.trackAppEvent("open");
+  Authsafe.configure("your secret key")
+  Authsafe.trackAppEvent("open")
 ```
 The AuthSafe SDK collects device fingerprints from the device and sends this data directly to Authsafe Dashboard.
 
@@ -119,23 +127,23 @@ Implement below all methods in your AppDelegete.
 
 ```
     func applicationDidBecomeActive(_ application: UIApplication) {
-        Authsafe.trackAppEvent("active");
+        Authsafe.trackAppEvent("active")
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-    	Authsafe.trackAppEvent("inactive");
+    	Authsafe.trackAppEvent("inactive")
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        Authsafe.trackAppEvent("background");
+        Authsafe.trackAppEvent("background")
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        Authsafe.trackAppEvent("foreground");
+        Authsafe.trackAppEvent("foreground")
     }
  
     func applicationWillTerminate(_ application: UIApplication) {
-        Authsafe.trackAppEvent("terminate");
+        Authsafe.trackAppEvent("terminate")
     }
     
 ```
@@ -150,19 +158,28 @@ There are two main parts of click events.
 // Place the below code in your Every ViewController viewDidLoad method
 
 ```
-   let touch = UITouch();
-   Authsafe.trackClickEvent("Current Screen Name", screenOrientation:UIApplication.shared.statusBarOrientation, view: self.view, touch:touch);
+   let touch = UITouch()
+   Authsafe.trackClickEvent("Current Screen Name", screenOrientation:UIApplication.shared.statusBarOrientation, view: self.view, touch:touch)
 ```
 
 
 3. Location Event: -This event useful for fast geo track location.
 In this event you need to get permission from the user, then you need call the below method.
-Authsafe needs two permission  ACCESS_FINE_LOCATION
-If permission is already granted the call the below method
+Add these lines in your info.plist 
+
+ <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Application requires user’s location for better user experience.</string>
+
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Application requires user’s location for better user experience.</string>
+
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Application requires user’s location for better user experience.</string>
+    
 
 ```
 //For logging location event, three parameter required screen name, latitude, longitude.
- Authsafe.trackLocationEvent("Current Screen Name", latitude: location?.coordinate.longitude, longitude: location?.coordinate.longitude);
+ Authsafe.trackLocationEvent("Current Screen Name", latitude: location?.coordinate.longitude, longitude: location?.coordinate.longitude)
 ```
 
 
