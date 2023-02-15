@@ -165,14 +165,16 @@ If permission is already granted the call the below method
 ```
 
 
-4. Login Event: -For tracking login event you need to send the authafe token in your login request.
+4. Login Event: -For tracking login event you need to send the authafe token,and package name with your login request.
 
 ```
-//For form body
 key = "request_token"
-value = AuthSafe.getRequestToken());
+value = AuthSafe.token())
 
-//For raw data
+
+var bundleID:String = Bundle.main.bundleIdentifier!
+key = "package"
+value = bundleID
 
 ```
 
